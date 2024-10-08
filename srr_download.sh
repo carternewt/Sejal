@@ -14,7 +14,8 @@ ml SRA-Toolkit/3.0.3-gompi-2022a
 OUT='/work/lylab/cjn40747/Sejal'
 
 mkdir -p $OUT/reads
-while read line; do 
-    fasterq-dump -O $OUT/reads -t $OUT -e 12 "$line"
-done < $OUT/Paenibacillus_SRR.csv
+fasterq-dump -O $OUT/reads -t $OUT -e 12 SRR10903991
+#while read line; do 
+#    fasterq-dump -O $OUT/reads -t $OUT -e 12 "$line"
+#done < $OUT/Paenibacillus_SRR.csv
     
