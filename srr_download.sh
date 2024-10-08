@@ -15,7 +15,8 @@ OUT='/work/lylab/cjn40747/Sejal'
 
 mkdir -p $OUT/reads
 fasterq-dump -O $OUT/reads -t $OUT -e 12 SRR10903991
-#while read line; do 
-#    fasterq-dump -O $OUT/reads -t $OUT -e 12 "$line"
-#done < $OUT/Paenibacillus_SRR.csv
+while read line; do
+    line=$(echo "$line" | xargs)
+    fasterq-dump -O $OUT/reads -t $OUT -e 12 "$line"
+done < $OUT/Paenibacillus_SRR.csv
     
