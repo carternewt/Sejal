@@ -9,7 +9,7 @@
 #SBATCH --error=/work/lylab/cjn40747/Sejal/logs/%j.err
 #SBATCH --output=/work/lylab/cjn40747/Sejal/logs/%j.out
 
-ml SRA-Toolkit/3.0.3-gompi-2022a
+ml SRA-Toolkit/3.0.1-centos_linux64
 
 OUT='/work/lylab/cjn40747/Sejal'
 
