@@ -15,6 +15,7 @@ OUT='/work/lylab/cjn40747/Sejal'
 
 mkdir -p $OUT/reads
 while read line; do
+    line=$(echo $line | xargs)
     echo "$line"
     prefetch "$line" -o $OUT/SRA/"$line".sra
     fasterq-dump $OUT/SRA/"$line".sra -O $OUT/reads -t $OUT -e 12
