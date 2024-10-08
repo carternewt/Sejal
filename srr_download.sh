@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH --partition=batch
-#SBATCH --ntasks=20
+#SBATCH --ntasks=1
 #SBATCH --cpus-per-task=12
 #SBATCH --mem=4G
 #SBATCH --time=1:00:00
@@ -15,6 +15,7 @@ OUT='/work/lylab/cjn40747/Sejal'
 
 mkdir -p $OUT/reads
 while read line; do
+    prefetch $line -O $OUT/SRR/$line 
     fasterq-dump $line -O $OUT/reads -t $OUT -e 12
 done < $OUT/Paenibacillus_SRR.csv
     
