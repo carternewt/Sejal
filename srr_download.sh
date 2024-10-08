@@ -14,7 +14,9 @@ ml SRA-Toolkit/3.0.3-gompi-2022a
 OUT='/work/lylab/cjn40747/Sejal'
 
 mkdir -p $OUT/reads
-
-cat $OUT/Paenibacillus_SRR.txt | xargs fasterq-dump -O $OUT/reads -t $OUT -e 12
-
+while read line; do
+    echo "$line"
+    prefetch "$line" -o $OUT/SRA/"$line".sra
+    fasterq-dump $OUT/SRA/"$line".sra -O $OUT/reads -t $OUT -e 12
+done < $OUT/Paenibacillus_SRR.txt
     
