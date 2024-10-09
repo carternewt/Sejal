@@ -12,12 +12,12 @@
 ml SRA-Toolkit/3.0.3-gompi-2022a
 
 OUT='/work/lylab/cjn40747/Sejal'
-
+prefetch PRJNA1133887 -o $OUT/SRA/ -T sra
 mkdir -p $OUT/reads
-while read line; do
-    line=$(echo $line | xargs)
-    echo "$line"
-    prefetch "$line" -o $OUT/SRA/"$line".sra
-    fasterq-dump $OUT/SRA/"$line".sra -O $OUT/reads -t $OUT -e 12
-done < $OUT/Paenibacillus_SRR.txt
+#while read line; do
+#    line=$(echo $line | xargs)
+#    echo "$line"
+#    prefetch PRJNA1133887 -o $OUT/SRA/ -T sra
+#    fasterq-dump $OUT/SRA/"$line".sra -O $OUT/reads -t $OUT -e 12
+#done < $OUT/Paenibacillus_SRR.txt
     
