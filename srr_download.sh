@@ -18,7 +18,7 @@ find $OUT/SRA -type f -name *.sra | while read -r file; do
     fasterq-dump "$file" -O $OUT/reads -t $OUT -e 12
 done
 
-cat $OUT/seqfile.txt
+touch $OUT/seqfile.txt
 find $OUT/assemblies -type f -name "*scaffolds.fasta" | while read -r file; do
     file_name=$(basename "$file")
     prefix="${file_name%.scaffolds.fasta}"
