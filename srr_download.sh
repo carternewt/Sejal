@@ -19,7 +19,8 @@ find $OUT/SRA -type f -name *.sra | while read -r file; do
     name=$(basename -s .sra "$file")
     fasterq-dump "$file" -O $OUT/reads -t $OUT -e 12
     seqkit fq2fa $OUT/reads/"$name".fastq -o $OUT/reads/"$name".fa 
-    gzip -k $OUT/reads/"$name".fa > $OUT/reads/"$name".fa.gz
+    gzip -k $OUT/reads/"$name"_1.fa > $OUT/reads/"$name"_1.fa.gz
+    gzip -k $OUT/reads/"$name"_2.fa > $OUT/reads/"$name"_2.fa.gz
 done
 
 #touch $OUT/seqfile.txt
