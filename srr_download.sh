@@ -14,14 +14,12 @@ ml SeqKit/2.5.1
 
 OUT='/work/lylab/cjn40747/Sejal'
 mkdir -p $OUT/reads
-prefetch -O $OUT/SRA/ -T sra --option-file $OUT/test.txt
+prefetch -O $OUT/SRA/ -T sra --option-file PRJNA915632
 find $OUT/SRA -type f -name *.sra | while read -r file; do
     name=$(basename -s .sra "$file")
     fasterq-dump "$file" -O $OUT/reads -t $OUT -e 12
-    seqkit fq2fa $OUT/reads/"$name"_1.fastq -o $OUT/reads/"$name"_1.fa 
-    seqkit fq2fa $OUT/reads/"$name"_2.fastq -o $OUT/reads/"$name"_2.fa
-    gzip -k $OUT/reads/"$name"_1.fa > $OUT/reads/"$name"_1.fa.gz
-    gzip -k $OUT/reads/"$name"_2.fa > $OUT/reads/"$name"_2.fa.gz
+    seqkit fq2fa $OUT/reads/"$name"_1.fastq -o $OUT/reads/"$name".fa 
+    gzip -k $OUT/reads/"$name".fa 
 done
 
 #touch $OUT/seqfile.txt
