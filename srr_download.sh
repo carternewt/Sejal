@@ -16,7 +16,7 @@ OUT='/work/lylab/cjn40747/Sejal'
 mkdir -p $OUT/reads
 prefetch -O $OUT/SRA/ -T sra --option-file $OUT/test.txt
 find $OUT/SRA -type f -name *.sra | while read -r file; do
-    name=$(basename -s "$file")
+    name=$(basename -s .sra "$file")
     fasterq-dump "$file" -O $OUT/reads -t $OUT -e 12
     seqkit fq2fa $OUT/reads/"$name".fastq -o $OUT/reads/"$name".fa 
     gzip -k $OUT/reads/"$name".fa > $OUT/reads/"$name".fa.gz
