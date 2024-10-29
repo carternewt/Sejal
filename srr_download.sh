@@ -15,7 +15,7 @@ ml SeqKit/2.5.1
 OUT='/work/lylab/cjn40747/Sejal'
 mkdir -p $OUT/reads
 mkdir -p $OUT/SRA
-prefetch -O $OUT/SRA/ -T sra --option-file PRJNA915632
+prefetch -O $OUT/SRA/ -T sra PRJNA915632
 find $OUT/SRA -type f -name *.sra | while read -r file; do
     name=$(basename -s .sra "$file")
     fasterq-dump "$file" -O $OUT/reads -t $OUT -e 12
